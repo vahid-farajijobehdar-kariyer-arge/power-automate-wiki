@@ -1,80 +1,63 @@
 # ⚡ Power Automate Wiki
 
-> **The comprehensive, community-driven reference for Microsoft Power Automate** — connectors, expressions, patterns, real-world examples, and everything in between.
+> **Microsoft Power Automate için kapsamlı referans kaynağı** — bağlayıcılar, ifadeler, desenler, gerçek dünya örnekleri ve çok daha fazlası.
 
 <span class="badge badge-blue">Cloud Flows</span>
 <span class="badge badge-green">Desktop Flows</span>
-<span class="badge badge-purple">Expressions</span>
-<span class="badge badge-orange">Best Practices</span>
+<span class="badge badge-purple">İfadeler</span>
+<span class="badge badge-orange">En İyi Uygulamalar</span>
 
 ---
 
-## What You'll Find Here
+### 🔌 Bağlayıcı Referansı
 
-This wiki is structured so you can **read it from top to bottom** (like a book) or **jump straight to what you need** (like a reference). Use the sidebar or search bar above.
-
-```mermaid
-graph LR
-    A([🔔 Trigger]) --> B[Actions]
-    B --> C{Condition}
-    C -->|Yes| D[✅ Path A]
-    C -->|No|  E[❌ Path B]
-    D --> F([🏁 End])
-    E --> F
-    style A fill:#0078d4,color:#fff
-    style F fill:#22c55e,color:#fff
-```
-
-
-### 🔌 Connector Reference
-
-| Connector | Use case |
-|-----------|----------|
-| [SharePoint](connectors/sharepoint) | Lists, libraries, files, site automation |
-| [Microsoft Teams](connectors/teams) | Messages, Adaptive Cards, approvals |
-| [Excel Online](connectors/excel-online) | Tables, rows, Office Scripts |
-| [OneDrive](connectors/onedrive) | File operations, sharing |
-| [Dataverse](connectors/dataverse) | Model-driven apps, CRM data |
-| [SQL Server](connectors/sql-server) | Relational DB queries, stored procs |
-| [Azure DevOps](connectors/azure-devops) | Work items, pipelines, releases |
-| [HTTP](connectors/http) | Any REST API, webhooks |
-| [AI Builder 🤖](connectors/ai-builder) | GPT prompts, document AI, sentiment, OCR, predictions |
+| Bağlayıcı | Kullanım Alanı |
+|-----------|----------------|
+| [SharePoint](connectors/sharepoint) | Liste, kitaplık, dosya ve site otomasyonu |
+| [Microsoft Teams](connectors/teams) | Mesajlar, Adaptive Card, onaylar |
+| [Excel Online](connectors/excel-online) | Tablolar, satırlar, Office Scripts |
+| [OneDrive](connectors/onedrive) | Dosya işlemleri, paylaşım |
+| [Dataverse](connectors/dataverse) | Model tabanlı uygulama ve CRM verisi |
+| [SQL Server](connectors/sql-server) | İlişkisel DB sorguları, stored proc |
+| [Azure DevOps](connectors/azure-devops) | İş öğeleri, pipeline, sürümler |
+| [HTTP](connectors/http) | Tüm REST API ve webhook |
+| [AI Builder 🤖](connectors/ai-builder) | GPT, belge AI, duygu analizi, OCR, tahmin |
 
 ---
 
-### 🛠️ Built-in Tools
+### 🛠️ Yerleşik Araçlar
 
-| Tool | What it does |
-|------|-------------|
-| [Control](built-in/control) | `Condition`, `Apply to each`, `Switch`, `Scope` |
-| [Variables](built-in/variables) | Store, update, increment values |
-| [Data Operations](built-in/data-operations) | `Parse JSON`, `Filter array`, `Select`, `Compose` |
-| [Date & Time](built-in/date-time) | Time zones, date math, formatting |
-| [Text Functions](built-in/text-functions) | Substring, find, replace |
-
----
-
-### 🧩 Key Patterns
-
-- **[Error Handling →](patterns/error-handling)** — try/catch with Scope
-- **[Approvals →](patterns/approvals)** — Teams Adaptive Card approval loop
-- **[Child Flows →](patterns/child-flows)** — reusable sub-flows
-- **[Pagination →](patterns/pagination)** — handle large result sets
+| Araç | Ne İşe Yarar |
+|------|--------------|
+| [Kontrol](built-in/control) | `Koşul`, `Her birine uygula`, `Switch`, `Kapsam` |
+| [Değişkenler](built-in/variables) | Değer saklama, güncelleme, artırma |
+| [Veri İşlemleri](built-in/data-operations) | `JSON Ayrıştır`, `Diziyi Filtrele`, `Seç`, `Oluştur` |
+| [Tarih ve Saat](built-in/date-time) | Saat dilimleri, tarih hesabı, biçimlendirme |
+| [Metin Fonksiyonları](built-in/text-functions) | Alt dize, bulma, değiştirme |
 
 ---
 
-## Reading Conventions
+### 🧩 Temel Desenler
 
-> 💡 **Tip boxes** like this contain pro tips and shortcuts.
+- **[Hata Yönetimi →](patterns/error-handling)** — Scope ile try/catch
+- **[Onay İş Akışları →](patterns/approvals)** — Teams Adaptive Card onay döngüsü
+- **[Alt Akışlar →](patterns/child-flows)** — Yeniden kullanılabilir alt akışlar
+- **[Sayfalandırma →](patterns/pagination)** — Büyük sonuç kümelerini yönetme
 
-> ⚠️ **Warning boxes** highlight common mistakes.
+---
 
-> 🔴 **Danger boxes** warn about security or data-loss risks.
+## Okuma Kuralları
 
-Code blocks show exact expressions you can copy-paste:
+> 💡 **İpucu kutuları** profesyonel ipuçları ve kısayollar içerir.
+
+> ⚠️ **Uyarı kutuları** yaygın hataları vurgular.
+
+> 🔴 **Tehlike kutuları** güvenlik veya veri kaybı risklerini belirtir.
+
+Kod blokları kopyalayıp yapıştırabileceğiniz ifadeleri gösterir:
 
 ```
 formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm')
 ```
 
-Tables with a ✅ / ⚠️ / ❌ column indicate support status or recommendation level.
+✅ / ⚠️ / ❌ sütunlu tablolar destek durumunu veya öneri seviyesini gösterir.
