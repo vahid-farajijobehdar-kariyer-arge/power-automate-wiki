@@ -7,18 +7,31 @@
   <meta name="description" content="Advanced Power Automate reference wiki — connectors, expressions, patterns, examples." />
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Microsoft_Power_Automate_Logo.svg/32px-Microsoft_Power_Automate_Logo.svg.png" />
 
-  <!-- Docsify theme -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css" />
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Custom overrides -->
+  <!-- Base Docsify theme (vue — light, clean) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/themes/vue.css" />
+
+  <!-- Prism syntax: One Light (readable, beautiful) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-one-light.min.css" />
+
+  <!-- Custom design system -->
   <link rel="stylesheet" href="assets/custom.css" />
 </head>
 <body>
-  <div id="app">Loading Power Automate Wiki…</div>
+  <div id="app">
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:16px;font-family:Inter,sans-serif;color:#64748b">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Microsoft_Power_Automate_Logo.svg/48px-Microsoft_Power_Automate_Logo.svg.png" alt="" style="animation:spin 1s linear infinite;width:48px" />
+      <span style="font-size:1.1em;font-weight:600;color:#0078d4">Loading Power Automate Wiki…</span>
+    </div>
+    <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+  </div>
 
   <script>
     window.$docsify = {
-      name: '⚡ Power Automate Wiki',
+      name: '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Microsoft_Power_Automate_Logo.svg/22px-Microsoft_Power_Automate_Logo.svg.png" style="vertical-align:-4px;margin-right:6px"> Power Automate Wiki',
       repo: 'https://github.com/vahid-farajijobehdar-kariyer-arge/power-automate-wiki',
       homepage: 'README.md',
       loadSidebar: '_sidebar.md',
@@ -33,9 +46,9 @@
         depth: 4,
       },
       copyCode: {
-        buttonText: 'Copy',
+        buttonText: '⎘ Copy',
         errorText: 'Error',
-        successText: 'Copied!',
+        successText: '✓ Copied!',
       },
       pagination: {
         previousText: '← Previous',
@@ -51,14 +64,18 @@
         querySelector: '.mermaid',
       },
       plugins: [
-        /* badge plugin */
-        function (hook, vm) {
-          hook.beforeEach(function (content) {
-            /* Replace :tag[label] with badge HTML */
-            return content.replace(
-              /:badge\[([^\]]+)\]\{([^}]+)\}/g,
-              '<span class="badge badge-$2">$1</span>'
-            );
+        /* Reading time + word count footer */
+        function (hook) {
+          hook.afterEach(function (html, next) {
+            const words = html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+            const mins  = Math.max(1, Math.ceil(words / 220));
+            const bar = `
+              <div class="page-meta">
+                <span>⏱ ${mins} min read</span>
+                <span class="sep">·</span>
+                <span>${words.toLocaleString()} words</span>
+              </div>`;
+            next(bar + html);
           });
         },
       ],
@@ -73,18 +90,41 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
 
   <!-- Mermaid diagrams -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@latest/dist/docsify-mermaid.js"></script>
-  <script>mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });</script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      securityLevel: 'loose',
+      themeVariables: {
+        primaryColor: '#dbeafe',
+        primaryTextColor: '#1e3a5f',
+        primaryBorderColor: '#93c5fd',
+        lineColor: '#94a3b8',
+        secondaryColor: '#f0fdf4',
+        tertiaryColor: '#fef3c7',
+        background: '#ffffff',
+        mainBkg: '#f0f7ff',
+        nodeBorder: '#3b82f6',
+        clusterBkg: '#f8fafc',
+        titleColor: '#1e293b',
+        edgeLabelBackground: '#ffffff',
+        fontFamily: 'Inter, -apple-system, sans-serif',
+        fontSize: '14px',
+      }
+    });
+  </script>
 
-  <!-- Syntax highlighting -->
+  <!-- Prism language support -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-http.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-markup.min.js"></script>
 
   <!-- Custom JS -->
   <script src="assets/custom.js"></script>
