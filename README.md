@@ -25,21 +25,6 @@ graph LR
     style F fill:#22c55e,color:#fff
 ```
 
----
-
-## Quick Navigation
-
-### 🚀 New to Power Automate?
-Start here — no prior knowledge needed.
-
-| Step | What to read |
-|------|-------------|
-| 1 | [What is Power Automate?](getting-started/what-is-power-automate) |
-| 2 | [Flow Types — Cloud vs Desktop](getting-started/flow-types) |
-| 3 | [Your First Flow — step by step](getting-started/first-flow) |
-| 4 | [Interface Overview](getting-started/interface) |
-
----
 
 ### 🔌 Connector Reference
 
@@ -93,10 +78,3 @@ formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm')
 ```
 
 Tables with a ✅ / ⚠️ / ❌ column indicate support status or recommendation level.
-
----
-
-## Contributing
-
-Found an error or want to add content?
-[Open an issue](https://github.com/vahid-farajijobehdar-kariyer-arge/power-automate-wiki/issues) or submit a pull request.
