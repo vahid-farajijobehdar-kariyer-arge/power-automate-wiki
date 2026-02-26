@@ -30,6 +30,7 @@ A **connector** is a pre-built wrapper around a service's API. Power Automate ha
 | SQL Server | Premium | [→](sql-server) |
 | Azure DevOps | Standard | [→](azure-devops) |
 | HTTP | Premium | [→](http) |
+| AI Builder | Premium | [→](ai-builder) |
 
 ---
 

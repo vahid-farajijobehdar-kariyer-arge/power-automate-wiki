@@ -24,6 +24,7 @@
 - [SQL Server](connectors/sql-server)
 - [Azure DevOps](connectors/azure-devops)
 - [HTTP & Webhooks](connectors/http)
+- [AI Builder 🤖](connectors/ai-builder)
 
 ---
 

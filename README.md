@@ -53,6 +53,7 @@ Start here — no prior knowledge needed.
 | [SQL Server](connectors/sql-server) | Relational DB queries, stored procs |
 | [Azure DevOps](connectors/azure-devops) | Work items, pipelines, releases |
 | [HTTP](connectors/http) | Any REST API, webhooks |
+| [AI Builder 🤖](connectors/ai-builder) | GPT prompts, document AI, sentiment, OCR, predictions |
 
 ---
 
