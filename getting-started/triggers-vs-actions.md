@@ -85,7 +85,7 @@ Right-click any action → **Configure run after** to set:
 - ⏱ has timed out
 - ⏭ is skipped
 
-This is how you build [error handling](../patterns/error-handling) in Power Automate.
+This is how you build [error handling](patterns/error-handling) in Power Automate.
 
 ---
 

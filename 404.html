@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting… | Power Automate Wiki</title>
+  <script>
+    // Docsify uses hash-based routing. When GitHub Pages gets a direct URL
+    // like /connectors/sharepoint it returns a 404. This page captures the
+    // path and redirects to the hash-based equivalent so the SPA can handle it.
+    var path = window.location.pathname;
+    var repo = '/power-automate-wiki'; // must match the GitHub Pages base path
+
+    // Strip the repo prefix so we get just the page path
+    var page = path.replace(repo, '') || '/';
+
+    // Redirect to the index with the hash route
+    window.location.replace(repo + '/#' + page);
+  </script>
+</head>
+<body>
+  <p>Redirecting…</p>
+</body>
+</html>

@@ -118,11 +118,11 @@ Expression:  endsWith(triggerOutputs()?['body/{FilenameWithExtension}'], '.pdf')
 
 Wrap your Teams action in a **Scope**, then add a second Scope with "Configure run after → has failed" to catch errors and send yourself an email.
 
-See [Error Handling pattern →](../patterns/error-handling)
+See [Error Handling pattern →](patterns/error-handling)
 
 ### Use a child flow for reusability
 
-If you want to send Teams notifications from multiple flows, extract the notification step into a [Child Flow →](../patterns/child-flows).
+If you want to send Teams notifications from multiple flows, extract the notification step into a [Child Flow →](patterns/child-flows).
 
 ---
 

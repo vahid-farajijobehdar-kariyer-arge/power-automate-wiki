@@ -153,7 +153,7 @@ graph TD
 @{result('Try')?[0]?['error']?['message']}
 ```
 
-For a complete error handling guide: [→ Error Handling Pattern](../patterns/error-handling)
+For a complete error handling guide: [→ Error Handling Pattern](patterns/error-handling)
 
 ---
 

@@ -32,7 +32,7 @@ All examples include proper **error handling** (Try/Catch Scopes) — a non-nego
 
 ## Before You Build
 
-- [ ] Verify you have the right connectors licensed (check [Standard vs Premium](../connectors/))
+- [ ] Verify you have the right connectors licensed (check [Standard vs Premium](connectors/))
 - [ ] Create a service account for the connections
 - [ ] Test in a development environment first
 - [ ] Add error handling from day one — don't add it "later"

@@ -2,7 +2,7 @@
 
 <span class="badge badge-purple">Advanced</span>
 
-Full string function reference — see also [Text Functions (built-in actions)](../built-in/text-functions) for the dedicated actions.
+Full string function reference — see also [Text Functions (built-in actions)](built-in/text-functions) for the dedicated actions.
 
 ---
 

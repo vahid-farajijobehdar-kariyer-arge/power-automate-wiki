@@ -2,7 +2,7 @@
 
 <span class="badge badge-purple">Advanced</span>
 
-See also [Date & Time actions](../built-in/date-time) for the action-based approach.
+See also [Date & Time actions](built-in/date-time) for the action-based approach.
 
 ---
 
