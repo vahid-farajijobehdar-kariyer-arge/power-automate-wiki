@@ -1,63 +1,65 @@
 # ⚡ Power Automate Wiki
 
-> **Microsoft Power Automate için kapsamlı referans kaynağı** — bağlayıcılar, ifadeler, desenler, gerçek dünya örnekleri ve çok daha fazlası.
+> **TR:** Microsoft Power Automate için kapsamlı referans kaynağı — bağlayıcılar, ifadeler, desenler, gerçek dünya örnekleri ve çok daha fazlası.
+>
+> **EN:** The comprehensive reference for Microsoft Power Automate — connectors, expressions, patterns, real-world examples, and everything in between.
 
 <span class="badge badge-blue">Cloud Flows</span>
 <span class="badge badge-green">Desktop Flows</span>
-<span class="badge badge-purple">İfadeler</span>
-<span class="badge badge-orange">En İyi Uygulamalar</span>
+<span class="badge badge-purple">İfadeler / Expressions</span>
+<span class="badge badge-orange">En İyi Uygulamalar / Best Practices</span>
 
 ---
 
-### 🔌 Bağlayıcı Referansı
+### 🔌 Bağlayıcı Referansı / Connector Reference
 
-| Bağlayıcı | Kullanım Alanı |
-|-----------|----------------|
-| [SharePoint](connectors/sharepoint) | Liste, kitaplık, dosya ve site otomasyonu |
-| [Microsoft Teams](connectors/teams) | Mesajlar, Adaptive Card, onaylar |
-| [Excel Online](connectors/excel-online) | Tablolar, satırlar, Office Scripts |
-| [OneDrive](connectors/onedrive) | Dosya işlemleri, paylaşım |
-| [Dataverse](connectors/dataverse) | Model tabanlı uygulama ve CRM verisi |
-| [SQL Server](connectors/sql-server) | İlişkisel DB sorguları, stored proc |
-| [Azure DevOps](connectors/azure-devops) | İş öğeleri, pipeline, sürümler |
-| [HTTP](connectors/http) | Tüm REST API ve webhook |
-| [AI Builder 🤖](connectors/ai-builder) | GPT, belge AI, duygu analizi, OCR, tahmin |
-
----
-
-### 🛠️ Yerleşik Araçlar
-
-| Araç | Ne İşe Yarar |
-|------|--------------|
-| [Kontrol](built-in/control) | `Koşul`, `Her birine uygula`, `Switch`, `Kapsam` |
-| [Değişkenler](built-in/variables) | Değer saklama, güncelleme, artırma |
-| [Veri İşlemleri](built-in/data-operations) | `JSON Ayrıştır`, `Diziyi Filtrele`, `Seç`, `Oluştur` |
-| [Tarih ve Saat](built-in/date-time) | Saat dilimleri, tarih hesabı, biçimlendirme |
-| [Metin Fonksiyonları](built-in/text-functions) | Alt dize, bulma, değiştirme |
+| Bağlayıcı / Connector | Kullanım / Use case |
+|-----------------------|---------------------|
+| [SharePoint](connectors/sharepoint) | Liste, kitaplık, dosya otomasyonu / Lists, libraries, files |
+| [Microsoft Teams](connectors/teams) | Mesajlar, Adaptive Card, onaylar / Messages, cards, approvals |
+| [Excel Online](connectors/excel-online) | Tablolar, satırlar / Tables, rows, Office Scripts |
+| [OneDrive](connectors/onedrive) | Dosya işlemleri / File operations, sharing |
+| [Dataverse](connectors/dataverse) | Model tabanlı uygulama / Model-driven apps, CRM |
+| [SQL Server](connectors/sql-server) | Sorgular, stored proc / Queries, stored procs |
+| [Azure DevOps](connectors/azure-devops) | İş öğeleri, pipeline / Work items, pipelines |
+| [HTTP](connectors/http) | REST API, webhook |
+| [AI Builder 🤖](connectors/ai-builder) | GPT, belge AI, duygu analizi / GPT, document AI, sentiment, OCR |
 
 ---
 
-### 🧩 Temel Desenler
+### 🛠️ Yerleşik Araçlar / Built-in Tools
 
-- **[Hata Yönetimi →](patterns/error-handling)** — Scope ile try/catch
-- **[Onay İş Akışları →](patterns/approvals)** — Teams Adaptive Card onay döngüsü
-- **[Alt Akışlar →](patterns/child-flows)** — Yeniden kullanılabilir alt akışlar
-- **[Sayfalandırma →](patterns/pagination)** — Büyük sonuç kümelerini yönetme
+| Araç / Tool | Ne İşe Yarar / What it does |
+|-------------|------------------------------|
+| [Kontrol / Control](built-in/control) | Koşul, Döngü, Switch, Kapsam / Condition, Loop, Switch, Scope |
+| [Değişkenler / Variables](built-in/variables) | Saklama, güncelleme / Store, update, increment |
+| [Veri İşlemleri / Data Operations](built-in/data-operations) | JSON, Filtre, Seç / Parse JSON, Filter, Select, Compose |
+| [Tarih ve Saat / Date & Time](built-in/date-time) | Saat dilimi, tarih hesabı / Time zones, date math |
+| [Metin / Text Functions](built-in/text-functions) | Alt dize, bul, değiştir / Substring, find, replace |
 
 ---
 
-## Okuma Kuralları
+### 🧩 Temel Desenler / Key Patterns
 
-> 💡 **İpucu kutuları** profesyonel ipuçları ve kısayollar içerir.
+- **[Hata Yönetimi / Error Handling →](patterns/error-handling)** — Scope ile try/catch
+- **[Onay Akışları / Approvals →](patterns/approvals)** — Teams Adaptive Card onay döngüsü / approval loop
+- **[Alt Akışlar / Child Flows →](patterns/child-flows)** — Yeniden kullanılabilir alt akışlar / reusable sub-flows
+- **[Sayfalandırma / Pagination →](patterns/pagination)** — Büyük sonuç kümeleri / large result sets
 
-> ⚠️ **Uyarı kutuları** yaygın hataları vurgular.
+---
 
-> 🔴 **Tehlike kutuları** güvenlik veya veri kaybı risklerini belirtir.
+## Okuma Kuralları / Reading Conventions
 
-Kod blokları kopyalayıp yapıştırabileceğiniz ifadeleri gösterir:
+> 💡 **İpucu / Tip** — Profesyonel ipuçları ve kısayollar / pro tips and shortcuts.
+
+> ⚠️ **Uyarı / Warning** — Yaygın hatalar / common mistakes.
+
+> 🔴 **Tehlike / Danger** — Güvenlik ve veri kaybı riskleri / security or data-loss risks.
+
+Kod blokları kopyalayıp yapıştırabileceğiniz ifadeleri gösterir / Code blocks show exact expressions to copy-paste:
 
 ```
 formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm')
 ```
 
-✅ / ⚠️ / ❌ sütunlu tablolar destek durumunu veya öneri seviyesini gösterir.
+✅ / ⚠️ / ❌ sütunlu tablolar destek durumunu gösterir / columns indicate support status or recommendation level.

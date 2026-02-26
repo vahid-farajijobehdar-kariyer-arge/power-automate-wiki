@@ -1,21 +1,21 @@
 <!-- _sidebar.md -->
 
 - **⚡ Power Automate Wiki**
-- [🏠 Ana Sayfa](/)
+- [🏠 Ana Sayfa / Home](/)
 
 ---
 
-- **🚀 Başlangıç**
-- [Power Automate Nedir?](getting-started/what-is-power-automate)
-- [Akış Türleri](getting-started/flow-types)
-- [İlk Akışınız](getting-started/first-flow)
-- [Arayüz Genel Bakışı](getting-started/interface)
-- [Tetikleyiciler ve Eylemler](getting-started/triggers-vs-actions)
+- **🚀 Başlangıç / Getting Started**
+- [Power Automate Nedir? / What is PA?](getting-started/what-is-power-automate)
+- [Akış Türleri / Flow Types](getting-started/flow-types)
+- [İlk Akışınız / Your First Flow](getting-started/first-flow)
+- [Arayüz / Interface Overview](getting-started/interface)
+- [Tetikleyiciler ve Eylemler / Triggers vs Actions](getting-started/triggers-vs-actions)
 
 ---
 
-- **🔌 Bağlayıcılar**
-- [Genel Bakış](connectors/)
+- **🔌 Bağlayıcılar / Connectors**
+- [Genel Bakış / Overview](connectors/)
 - [SharePoint](connectors/sharepoint)
 - [Microsoft Teams](connectors/teams)
 - [Excel Online](connectors/excel-online)
@@ -23,43 +23,43 @@
 - [Microsoft Dataverse](connectors/dataverse)
 - [SQL Server](connectors/sql-server)
 - [Azure DevOps](connectors/azure-devops)
-- [HTTP ve Webhook](connectors/http)
+- [HTTP ve Webhook / HTTP & Webhooks](connectors/http)
 - [AI Builder 🤖](connectors/ai-builder)
 
 ---
 
-- **🛠️ Yerleşik Araçlar**
-- [Genel Bakış](built-in/)
-- [Kontrol (Koşullar ve Döngüler)](built-in/control)
-- [Değişkenler](built-in/variables)
-- [Veri İşlemleri](built-in/data-operations)
-- [Tarih ve Saat](built-in/date-time)
-- [Metin Fonksiyonları](built-in/text-functions)
+- **🛠️ Yerleşik Araçlar / Built-in Tools**
+- [Genel Bakış / Overview](built-in/)
+- [Kontrol / Control (Conditions & Loops)](built-in/control)
+- [Değişkenler / Variables](built-in/variables)
+- [Veri İşlemleri / Data Operations](built-in/data-operations)
+- [Tarih ve Saat / Date & Time](built-in/date-time)
+- [Metin Fonksiyonları / Text Functions](built-in/text-functions)
 
 ---
 
-- **📐 İfade Referansı**
-- [Genel Bakış](expressions/)
-- [Metin Fonksiyonları](expressions/string)
-- [Tarih Fonksiyonları](expressions/date)
-- [Dizi Fonksiyonları](expressions/array)
-- [Mantıksal ve Karşılaştırma](expressions/logical)
-- [Dönüşüm Fonksiyonları](expressions/conversion)
+- **📐 İfade Referansı / Expressions**
+- [Genel Bakış / Overview](expressions/)
+- [Metin / String Functions](expressions/string)
+- [Tarih / Date Functions](expressions/date)
+- [Dizi / Array Functions](expressions/array)
+- [Mantıksal / Logical & Comparison](expressions/logical)
+- [Dönüşüm / Conversion Functions](expressions/conversion)
 
 ---
 
-- **🧩 Desenler ve En İyi Uygulamalar**
-- [Hata Yönetimi (Try/Catch)](patterns/error-handling)
-- [Onay İş Akışları](patterns/approvals)
-- [Alt Akışlar](patterns/child-flows)
-- [Sayfalandırma](patterns/pagination)
-- [Performans İpuçları](patterns/performance)
-- [Güvenlik En İyi Uygulamaları](patterns/security)
+- **🧩 Desenler / Patterns & Best Practices**
+- [Hata Yönetimi / Error Handling](patterns/error-handling)
+- [Onay Akışları / Approvals](patterns/approvals)
+- [Alt Akışlar / Child Flows](patterns/child-flows)
+- [Sayfalandırma / Pagination](patterns/pagination)
+- [Performans / Performance Tips](patterns/performance)
+- [Güvenlik / Security](patterns/security)
 
 ---
 
-- **📋 Gerçek Dünya Örnekleri**
-- [Çalışan Oryantasyonu](examples/employee-onboarding)
-- [IT Ticket Otomasyonu](examples/it-ticket)
-- [Haftalık Rapor](examples/weekly-report)
-- [Veri Senkronizasyon Hattı](examples/data-sync)
+- **📋 Örnekler / Real-World Examples**
+- [Çalışan Oryantasyonu / Employee Onboarding](examples/employee-onboarding)
+- [IT Ticket Otomasyonu / IT Ticket](examples/it-ticket)
+- [Haftalık Rapor / Weekly Report](examples/weekly-report)
+- [Veri Senkronizasyonu / Data Sync](examples/data-sync)
