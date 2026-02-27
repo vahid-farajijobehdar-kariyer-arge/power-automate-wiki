@@ -588,6 +588,11 @@ a, button { transition: color .15s, background .15s, border-color .15s, box-shad
 /* ─── Loading spinner override ───────────────────────────────── */
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ─── Language content show/hide ─────────────────────────────── */
+/* Default: show everything until JS sets a body class           */
+body.lang-en .markdown-section [data-lang="tr"] { display: none !important; }
+body.lang-tr .markdown-section [data-lang="en"] { display: none !important; }
+
 /* ─── Acknowledgement card ───────────────────────────────────── */
 .acknowledgement-card {
   margin-top: 1.5rem;

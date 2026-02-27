@@ -28,13 +28,26 @@
   var STORE = 'pa-wiki-lang';
   var lang  = localStorage.getItem(STORE) || 'tr';
 
-  /* Split "TR text / EN text" on the first " / " */
+  /* ── Helpers ── */
+
   function splitBi(str) {
     var i = str.indexOf(' / ');
     return i === -1 ? null : [str.slice(0, i).trim(), str.slice(i + 3).trim()];
   }
 
-  /* Walk all text nodes inside root; transform any that contain " / " */
+  /* Returns true if the node is inside a <pre> or <code> block */
+  function insideCode(node) {
+    var el = node.parentElement;
+    while (el) {
+      var t = el.tagName;
+      if (t === 'PRE' || t === 'CODE') return true;
+      el = el.parentElement;
+    }
+    return false;
+  }
+
+  /* ── 1. Split "TR text / EN text" labels in nav + headings + tables ── */
+
   function applyLangToRoot(root) {
     if (!root) return;
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
@@ -42,10 +55,10 @@
     while ((n = walker.nextNode())) nodes.push(n);
 
     nodes.forEach(function (node) {
+      if (insideCode(node)) return;
       var el = node.parentElement;
       if (!el) return;
 
-      /* On first encounter, cache the original bilingual string */
       var original = el.getAttribute('data-bi');
       if (!original) {
         if (!node.textContent.includes(' / ')) return;
@@ -59,12 +72,62 @@
     });
   }
 
+  /* ── 2. Tag **TR:** / **EN:** content blocks for CSS show/hide ── */
+
+  function applyLangToContent() {
+    var section = document.querySelector('.markdown-section');
+    if (!section) return;
+
+    var currentLang = null;
+
+    Array.from(section.children).forEach(function (el) {
+      var tag = el.tagName.toLowerCase();
+
+      /* Reset at headings and horizontal rules */
+      if (/^h[1-4]$/.test(tag) || tag === 'hr') {
+        currentLang = null;
+        return;
+      }
+
+      /* Detect a language-marker paragraph: starts with <strong>TR…</strong> or <strong>EN…</strong> */
+      if (tag === 'p') {
+        var firstEl = el.firstElementChild;
+        if (firstEl && firstEl.tagName === 'STRONG') {
+          var t = firstEl.textContent.trim();
+          if (/^TR[\s:\u2014\-]/.test(t) || t === 'TR') {
+            currentLang = 'tr';
+            el.setAttribute('data-lang', 'tr');
+            return;
+          }
+          if (/^EN[\s:\u2014\-]/.test(t) || t === 'EN') {
+            currentLang = 'en';
+            el.setAttribute('data-lang', 'en');
+            return;
+          }
+        }
+      }
+
+      /* Carry the current language tag to following siblings (lists, blockquotes, etc.) */
+      if (currentLang) {
+        el.setAttribute('data-lang', currentLang);
+      }
+    });
+  }
+
+  /* ── 3. Set body class + run both transforms ── */
+
   function refreshAll() {
+    document.body.classList.toggle('lang-tr', lang === 'tr');
+    document.body.classList.toggle('lang-en', lang === 'en');
+
     applyLangToRoot(document.querySelector('.sidebar-nav'));
     applyLangToRoot(document.querySelector('.app-nav'));
+    applyLangToRoot(document.querySelector('.markdown-section'));
+    applyLangToContent();
   }
 
   /* ── Language toggle button ── */
+
   function updateBtn() {
     var btn = document.getElementById('pa-lang-btn');
     if (!btn) return;
@@ -104,7 +167,7 @@
     updateBtn();
   }
 
-  /* ── Register as a proper Docsify plugin (hook.doneEach is the correct API) ── */
+  /* ── Register as a proper Docsify plugin ── */
   window.$docsify = window.$docsify || {};
   (window.$docsify.plugins = window.$docsify.plugins || []).push(function (hook) {
     hook.doneEach(function () {
