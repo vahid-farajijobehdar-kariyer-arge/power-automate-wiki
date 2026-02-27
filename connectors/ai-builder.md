@@ -2,62 +2,100 @@
 
 <span class="badge badge-purple">Premium</span> <span class="badge badge-blue">AI / ML</span>
 
-AI Builder brings Microsoft's machine-learning capabilities directly into your flows — no data science skills required. It covers document intelligence, language understanding, image analysis, and predictive models.
+## Bu Bağlayıcı Nedir? / What is This Connector?
 
-> 💡 AI Builder requires a **Power Apps / Power Automate Premium** license (or AI Builder add-on credits). Preview actions are subject to change.
+**TR:** AI Builder, Microsoft'un yapay zeka yeteneklerini doğrudan Power Automate akışlarınıza taşır — veri bilimi veya kodlama bilgisi gerekmez. Belge okuma (fatura, makbuz, kimlik), metin analizi (duygu analizi, dil algılama, çeviri), GPT tabanlı içerik üretimi ve özel tahmin modelleri bu bağlayıcı üzerinden kullanılabilir. Kısacası: akışınızın "anlayabilir", "okuyabilir" ve "düşünebilir" hale gelmesini sağlar.
 
----
+**EN:** AI Builder brings Microsoft's machine-learning capabilities directly into your flows — no data science or coding skills required. Use it to read documents (invoices, receipts, IDs), analyze text (sentiment, language detection, translation), run GPT prompts, and make predictions with custom-trained models. It turns your flow from a simple "if-this-then-that" into something that can actually understand and interpret information.
 
-## All Actions (from the screenshot)
-
-### 📄 Document & Image Intelligence
-
-| Action | Description | GA / Preview |
-|--------|-------------|-------------|
-| `Process documents` | Extract fields from custom-trained form models | ✅ GA |
-| `Process invoices` | Auto-read vendor, total, date, line items from invoice PDFs | ✅ GA |
-| `Process receipts` | Read totals, items, merchant from receipt images | ✅ GA |
-| `Process identity document` | Extract fields from passports and national ID cards | ✅ GA |
-| `Recognize text in image or document` | OCR — extract all text from any image or PDF | ✅ GA |
-| `Describe images` | Generate a natural-language description of an image | 🔬 Preview |
-| `Detect objects in images` | Locate and label objects in an image with bounding boxes | ✅ GA |
-| `Extract information from Co...` | Pull structured data from complex documents (contracts) | 🔬 Preview |
-| `Extract information from he...` | Extract fields from healthcare forms/documents | 🔬 Preview |
-| `Analyze Business Card` | Parse name, title, company, phone, email from a business card | ✅ GA |
-| `Save to AI Builder feed` | Feed data back to retrain a model | 🔬 Preview |
-
-### 💬 Language & Text
-
-| Action | Description | GA / Preview |
-|--------|-------------|-------------|
-| `Run a prompt` | Send a text prompt to a GPT model and get a response | ✅ GA |
-| `Analyze sentiment` | Classify text as Positive / Negative / Neutral / Mixed | ✅ GA |
-| `Detect language` | Identify the language of a text string | ✅ GA |
-| `Translate text` | Translate text between 100+ languages | ✅ GA |
-| `Generate key phrases` | Extract key phrases and important terms from text | ✅ GA |
-| `Extract standard entities` | Recognize Person, Location, Date, Organization in text | ✅ GA |
-| `Extract custom entities` | Recognize your own custom-defined entity types | ✅ GA |
-| `Classify into custom categories` | Classify text using your own trained classification model | ✅ GA |
-| `Classify into standard categories` | Classify text using Microsoft's pre-built categories | 🔬 Preview |
-
-### 🤖 Prediction
-
-| Action | Description | GA / Preview |
-|--------|-------------|-------------|
-| `Predict` | Run a trained AI Builder prediction model | ✅ GA |
-| `Predict by field` | Predict based on a Dataverse record field | ✅ GA |
-| `Predict by record ID` | Predict using a Dataverse record ID | ✅ GA |
+> 💡 **TR:** AI Builder, **Power Apps / Power Automate Premium** lisansı veya AI Builder eklenti kredisi gerektirir. "Preview" olarak işaretlenen eylemler değişebilir. / **EN:** AI Builder requires a **Power Apps / Power Automate Premium** license (or AI Builder add-on credits). Preview actions are subject to change.
 
 ---
 
-## Run a Prompt — GPT in Your Flow
+## Ne Zaman Kullanılır? / When Would You Use It?
 
-`Run a prompt` is the most powerful action — it lets you use a large language model anywhere in your flow.
+**TR — Tipik senaryolar:**
+- E-posta ile gelen fatura PDF'ini otomatik oku: satıcı adı, toplam tutar, vade tarihi çıkar
+- Müşteri yorumlarını analiz et, olumsuz yorumu otomatik olarak yöneticiye ilet
+- Gelen destek e-postasını GPT ile özetle ve kategorilendir
+- Kartvizit fotoğrafını tara, ilgili kişiyi Dataverse'e otomatik ekle
+- Türkçe gelen mesajı İngilizceye çevir, İngilizce akışında işle
 
-### Basic example — classify a support ticket
+**EN — Typical scenarios:**
+- Invoice PDF arrives via email → auto-extract vendor name, total, due date, line items
+- Customer review comes in → negative sentiment → auto-escalate to manager
+- Support email arrives → GPT summarizes it and categorizes by type
+- Business card photo taken → auto-create Contact in Dataverse
+- Turkish message arrives → auto-translate to English → process in English flow
+
+---
+
+## Nasıl Başlanır? / How to Start (First Steps)
+
+**TR — En kolay başlangıç (duygu analizi):**
+1. Akışa `Analyze sentiment` eylemini ekleyin
+2. **Language:** `tr` (Türkçe) veya `en` (İngilizce) seçin
+3. **Text:** Analiz etmek istediğiniz metni girin (ör. e-posta gövdesi)
+4. Çıktı: `positive`, `negative`, `neutral` veya `mixed`
+5. Sonuca göre koşul ekleyin: olumsuzsa yöneticiye bildirim gönder
+
+**EN — Easiest start (sentiment analysis):**
+1. Add `Analyze sentiment` action to your flow
+2. **Language:** `en` (English) or `tr` (Turkish)
+3. **Text:** Enter the text to analyze (e.g. email body)
+4. Output: `positive`, `negative`, `neutral`, or `mixed`
+5. Add a condition: if negative → notify manager
+
+---
+
+## All Actions / Tüm Eylemler
+
+### Belge ve Görüntü / Document & Image Intelligence
+
+| Eylem / Action | Açıklama / Description | GA / Önizleme |
+|----------------|------------------------|--------------|
+| `Process documents` | Özel eğitilmiş form modelinden alan çıkar / Extract fields from custom form models | ✅ GA |
+| `Process invoices` | Fatura PDF'inden satıcı, tutar, tarih, satır kalemleri oku / Auto-read invoice fields | ✅ GA |
+| `Process receipts` | Makbuz görüntüsünden toplam, ürün, satıcı oku / Read totals, items, merchant | ✅ GA |
+| `Process identity document` | Pasaport ve kimlik kartı alanlarını çıkar / Extract fields from IDs | ✅ GA |
+| `Recognize text in image or document` | OCR — görüntü veya PDF'den tüm metni çıkar / Extract all text | ✅ GA |
+| `Describe images` | Görüntünün doğal dil açıklamasını üret / Natural-language image description | 🔬 Önizleme |
+| `Detect objects in images` | Görüntüdeki nesneleri algıla ve etiketle / Locate and label objects | ✅ GA |
+| `Analyze Business Card` | Kartvizitteki ad, şirket, e-posta, telefon bilgilerini çıkar / Parse business card | ✅ GA |
+
+### Metin ve Dil / Language & Text
+
+| Eylem / Action | Açıklama / Description | GA / Önizleme |
+|----------------|------------------------|--------------|
+| `Run a prompt` | GPT modeline metin prompt'u gönder, yanıt al / Send text prompt to GPT model | ✅ GA |
+| `Analyze sentiment` | Metni Pozitif / Negatif / Nötr / Karışık olarak sınıflandır / Classify text sentiment | ✅ GA |
+| `Detect language` | Metnin dilini tanı / Identify the language of a text string | ✅ GA |
+| `Translate text` | 100+ dil arasında çeviri / Translate text between 100+ languages | ✅ GA |
+| `Generate key phrases` | Metinden anahtar ifadeleri çıkar / Extract key phrases | ✅ GA |
+| `Extract standard entities` | Kişi, Konum, Tarih, Kuruluş gibi varlıkları tanı / Recognize Person, Location, Date, Org | ✅ GA |
+| `Extract custom entities` | Kendi özel varlık türlerinizi tanı / Recognize custom-defined entity types | ✅ GA |
+| `Classify into custom categories` | Kendi eğittiğiniz model ile metin sınıflandır / Classify with custom trained model | ✅ GA |
+
+### Tahmin / Prediction
+
+| Eylem / Action | Açıklama / Description | GA / Önizleme |
+|----------------|------------------------|--------------|
+| `Predict` | Eğitilmiş AI Builder tahmin modeli çalıştır / Run a trained prediction model | ✅ GA |
+| `Predict by field` | Dataverse sütununa göre tahmin et / Predict based on Dataverse field | ✅ GA |
+| `Predict by record ID` | Dataverse kayıt ID ile tahmin et / Predict using a Dataverse record ID | ✅ GA |
+
+---
+
+## Run a Prompt — Akışınıza GPT Ekleyin / GPT in Your Flow
+
+**TR:** `Run a prompt`, en güçlü eylemdir — akışınızda bir büyük dil modelini (LLM/GPT) istediğiniz yerde kullanmanızı sağlar.
+
+**EN:** `Run a prompt` is the most powerful action — use a large language model anywhere in your flow.
+
+### Destek talebi sınıflandırma / Classify a support ticket
 
 ```
-Action: Run a prompt
+Eylem / Action: Run a prompt
 Prompt:
 Analyze this support message and respond in JSON only:
 {
@@ -70,21 +108,22 @@ Analyze this support message and respond in JSON only:
 Message: @{triggerBody()?['body/content']}
 ```
 
-Then use **`Parse JSON`** on the response body.
+Sonra **`Parse JSON`** ile yanıtı ayrıştırın / Then use **`Parse JSON`** on the response body.
 
-### Translation example
+### Çeviri / Translation
 
 ```
-Action: Run a prompt
-Prompt: Translate the following text to English. Return only the translated text, nothing else.
+Eylem / Action: Run a prompt
+Prompt: Translate the following text to English.
+Return only the translated text, nothing else.
 
 Text: @{triggerBody()?['description']}
 ```
 
-### Content generation
+### İçerik üretimi / Content generation
 
 ```
-Action: Run a prompt
+Eylem / Action: Run a prompt
 Prompt:
 Write a professional email declining a meeting request.
 - Requester name: @{triggerBody()?['name']}
@@ -93,43 +132,35 @@ Write a professional email declining a meeting request.
 Keep it under 100 words.
 ```
 
-> ⚠️ Always instruct the model to return **JSON only** when you plan to parse the output. Natural language responses can vary in structure.
+> ⚠️ **TR:** Çıktıyı ayrıştırmayı planlıyorsanız prompt'a "Yalnızca JSON olarak yanıt ver" diye belirtin — aksi halde model formatı değiştirebilir. / **EN:** Always instruct the model to return **JSON only** when you plan to parse the output.
 
 ---
 
-## Process Invoices — Full Example
+## Process Invoices — Fatura İşleme Örneği
 
 ```mermaid
 flowchart TD
-    T([📁 New file in SharePoint\nInvoices library]) --> GFC[Get file content]
-    GFC --> PI[Process invoices\nFile = file content]
-    PI --> COND{Confidence\n> 0.8?}
-    COND -->|Yes| CREATE[Create SP list item\nInvoiceLog]
-    COND -->|No| REVIEW[Create item:\nStatus = Needs Review]
-    CREATE --> EMAIL[Email accounting team]
-    REVIEW --> ALERT[Email with low-confidence flag]
+    T([SharePoint Faturalar kitaplığında\nyeni dosya\nNew file in Invoices library]) --> GFC[Dosya içeriğini al\nGet file content]
+    GFC --> PI[Faturaları işle\nProcess invoices]
+    PI --> COND{Güven skoru\nConfidence > 0.8?}
+    COND -->|Evet/Yes| CREATE[SP listesine kayıt ekle\nInvoiceLog - Auto-Processed]
+    COND -->|Hayır/No| REVIEW[Kayıt ekle\nStatus = Manuel İnceleme Gerekiyor]
+    CREATE --> EMAIL[Muhasebe ekibine e-posta\nEmail accounting team]
+    REVIEW --> ALERT[Düşük güven uyarısı gönder\nAlert with low-confidence flag]
 ```
 
-**Process invoices output fields:**
+**TR:** Process invoices çıktı alanları / **EN:** Output fields:
 
-| Field | Description |
-|-------|-------------|
-| `VendorName` | Supplier company name |
-| `VendorAddress` | Supplier address |
-| `InvoiceId` | Invoice number |
-| `InvoiceDate` | Invoice date |
-| `DueDate` | Payment due date |
-| `SubTotal` | Amount before tax |
-| `TotalTax` | Tax amount |
-| `InvoiceTotal` | Total amount due |
-| `Items` | Array of line items |
-| `Items/Description` | Line item description |
-| `Items/Quantity` | Line item quantity |
-| `Items/UnitPrice` | Line item unit price |
-| `Items/Amount` | Line item total |
-| `Confidence` | Model confidence (0–1) |
+| Alan / Field | Açıklama / Description |
+|--------------|------------------------|
+| `VendorName` | Tedarikçi adı / Supplier company name |
+| `InvoiceId` | Fatura numarası / Invoice number |
+| `InvoiceDate` | Fatura tarihi / Invoice date |
+| `DueDate` | Ödeme vadesi / Payment due date |
+| `InvoiceTotal` | Toplam tutar / Total amount due |
+| `Items` | Satır kalemleri dizisi / Array of line items |
+| `Confidence` | Model güven skoru (0–1) / Model confidence |
 
-Access fields:
 ```
 body('Process_invoices')?['vendorName']
 body('Process_invoices')?['invoiceTotal']?['amount']
@@ -138,34 +169,34 @@ body('Process_invoices')?['confidence']
 
 ---
 
-## Confidence Score Pattern
+## Confidence Score Pattern / Güven Skoru Deseni
 
-Always validate the model's confidence before trusting its output:
+**TR:** Modelin çıktısına güvenmeden önce her zaman güven skorunu kontrol edin — düşük skor = insan incelemesi gerekir.
 
 ```mermaid
 flowchart TD
-    PI[Process invoices] --> COMP[Compose: confidence\nbody Process_invoices confidence]
-    COMP --> COND{confidence\ngreater than 0.75?}
-    COND -->|Yes ✅| AUTO[Auto-create invoice record\nStatus = Auto-Processed]
-    COND -->|No ⚠️| MANUAL[Create record\nStatus = Needs Manual Review\nPost Teams alert to AP team]
+    PI[Faturayı işle\nProcess invoices] --> COMP[Güven skorunu al\nConfidence score]
+    COMP --> COND{0.75 üzeri mi?\ngreater than 0.75?}
+    COND -->|Evet/Yes| AUTO[Otomatik kayıt oluştur\nStatus = Auto-Processed]
+    COND -->|Hayır/No| MANUAL[Manuel inceleme kaydı\nStatus = Needs Review\nTeams uyarısı gönder]
 ```
 
 ```
-Condition expression:
+Koşul ifadesi / Condition expression:
 @{greaterOrEquals(body('Process_invoices')?['confidence'], 0.75)}
 ```
 
 ---
 
-## Sentiment Analysis — Escalation Flow
+## Sentiment Analysis — Duygu Analizi ve Eskalasyon
 
 ```mermaid
 flowchart TD
-    T([📧 New support email]) --> SENT[Analyze sentiment]
-    SENT --> SW{Sentiment}
-    SW -->|Negative| ESCAL[Create high-priority\nADO ticket + alert manager]
-    SW -->|Positive| LOG[Log to Feedback list\nno action needed]
-    SW -->|Neutral| TICKET[Create normal ticket]
+    T([Yeni destek e-postası\nNew support email]) --> SENT[Duygu analizi yap\nAnalyze sentiment]
+    SENT --> SW{Duygu / Sentiment}
+    SW -->|Olumsuz/Negative| ESCAL[Yüksek öncelikli ADO ticket\nve yönetici alarmı\nCreate ADO ticket + alert manager]
+    SW -->|Olumlu/Positive| LOG[Geri bildirim listesine kaydet\nLog to Feedback list]
+    SW -->|Nötr/Neutral| TICKET[Normal ticket oluştur\nCreate normal ticket]
 ```
 
 ```
@@ -178,22 +209,24 @@ body('Analyze_sentiment')?['confidenceScores']?['negative']
 
 ---
 
-## Entity Extraction — Auto-tag Support Tickets
+## Entity Extraction / Varlık Çıkarma
+
+**TR:** Metinden otomatik kişi adı, tarih, konum, tutar gibi bilgileri çıkarın:
 
 ```
-Action: Extract standard entities
-Language: English
-Text:     @{triggerBody()?['body']}
+Eylem / Action: Extract standard entities
+Language: tr  (veya / or en)
+Text: @{triggerBody()?['body']}
 
-Returns:
+Döner / Returns:
   entities:
-    - text: "John Smith"   category: "Person"
-    - text: "tomorrow"     category: "DateTime"
-    - text: "London"       category: "Location"
-    - text: "$500"         category: "Quantity"
+    - text: "Ahmet Yılmaz"  category: "Person"
+    - text: "yarın"         category: "DateTime"
+    - text: "İstanbul"      category: "Location"
+    - text: "₺500"          category: "Quantity"
 ```
 
-Use with **`Filter array`** to get only entities of a certain type:
+**Belirli türleri filtrele / Filter specific entity types:**
 ```
 Filter array:
   From:      @{body('Extract_standard_entities')?['entities']}
@@ -202,65 +235,42 @@ Filter array:
 
 ---
 
-## Translate Text — Multilingual Support Bot
+## Translate Text — Çok Dilli Destek Botu
 
 ```
-Action: Detect language
-Text: @{triggerBody()?['message']}
-→ body('Detect_language')?['language']   →  "tr", "de", "fr" …
+1. Eylem / Action: Detect language
+   Text: @{triggerBody()?['message']}
+   → body('Detect_language')?['language']  →  "tr", "de", "fr" …
 
-Action: Translate text (only if not English)
-Condition: not equals detectedLanguage to "en"
-  Text:            @{triggerBody()?['message']}
-  Source language: @{body('Detect_language')?['language']}
-  Target language: en
-  → body('Translate_text')?['text']
+2. Eylem / Action: Translate text (İngilizce değilse / only if not English)
+   Koşul / Condition: detectedLanguage not equals "en"
+   Text:            @{triggerBody()?['message']}
+   Source language: @{body('Detect_language')?['language']}
+   Target language: en
+   → body('Translate_text')?['text']
 
-Then process the English text, translate the response back to the original language.
+3. İngilizce metni işle, yanıtı orijinal dile geri çevir
+   Process English text, translate response back to original language
 ```
 
 ---
 
-## Business Card Scanner
+## Common Mistakes / Sık Yapılan Hatalar
 
-```
-Action: Analyze Business Card
-Image: @{triggerBody()?['fileContent']}   ← base64 image
-
-Output fields:
-  CleanedEmail      → body(...)?['cleanedEmail']
-  CompanyName       → body(...)?['companyName']
-  Department        → body(...)?['department']
-  Fax               → body(...)?['fax']
-  FirstName         → body(...)?['firstName']
-  LastName          → body(...)?['lastName']
-  MobilePhone       → body(...)?['mobilePhone']
-  Title             → body(...)?['title']
-  Website           → body(...)?['website']
-```
-
-Combine with **Dataverse `Upsert a row`** to auto-create a Contact record.
+| Hata / Mistake | Çözüm / Fix |
+|----------------|-------------|
+| `Run a prompt` tutarsız JSON döndürüyor | Prompt'a "Sadece geçerli JSON döndür, açıklama ekleme" ekleyin / Add "Return ONLY valid JSON, no explanation" |
+| `Process invoices` boş alan döndürüyor | PDF'in gömülü metin içerdiğinden emin olun — taranmış görüntüyse önce `Recognize text` kullanın / Ensure PDF has embedded text |
+| Güven skoru kontrol edilmiyor | Her zaman güven bazlı dallanma ekleyin — sadece 0.8 üzerinde otomatik işlem / Always branch on confidence |
+| Üretim ortamında Preview eylem kullanılıyor | Kritik akışlar için yalnızca GA eylemlerini kullanın / Use GA-only actions for critical flows |
+| AI Builder kredisi tükendi | Power Platform admin center → AI Builder → Credits bölümünden takip edin / Monitor usage in admin center |
 
 ---
 
-## Common Mistakes
+## Pro Tips / İpuçları
 
-| Mistake | Fix |
-|---------|-----|
-| `Run a prompt` returns inconsistent JSON | Add "Return ONLY valid JSON, no explanation" to the prompt |
-| `Process invoices` returns empty fields | Ensure the PDF has embedded text (not just a scanned image) or use `Recognize text` first |
-| Confidence score not checked | Always branch on confidence — auto-process only above 0.8 |
-| Using Preview actions in production | They can change or be removed; use GA-only actions for critical flows |
-| AI Builder credits exhausted | Monitor usage in Power Platform admin center → AI Builder → Credits |
-| Predict model returns wrong results | Retrain with more examples; check model's training evaluation |
-
----
-
-## Pro Tips
-
-- **`Run a prompt` + structured JSON output** is the fastest way to add AI intelligence to any flow — classify, summarize, extract, generate, all in one step.
-- Use **confidence scores** as a quality gate: high confidence → auto-process, low confidence → human review queue.
-- **`Recognize text` → expressions** lets you extract structured data from scanned documents even without a trained model — use `indexOf()` + `substring()` on the OCR output.
-- For **bulk document processing** (`Process invoices` in a loop), set **`Apply to each` concurrency to 1** — AI Builder has per-minute API limits.
-- **Model versioning**: before updating an AI Builder model, test the new version in a dev environment — output schema changes can break downstream `Parse JSON` actions.
-- Combine **`Detect language`** + **`Translate text`** + **`Run a prompt`** for a fully multilingual intelligent assistant.
+- **`Run a prompt` + yapılandırılmış JSON çıktısı** → tek adımda sınıflandırma, özetleme, çıkarma, üretme / Fastest way to add AI to any flow.
+- **Güven skoru kalite kapısı** olarak kullanın: yüksek → otomatik işle, düşük → insan inceleme kuyruğu / Use confidence as a quality gate.
+- **`Recognize text` + ifadeler** ile eğitilmiş model olmadan bile taranmış belgelerden veri çıkarın / Extract from scanned docs without a trained model.
+- **Toplu belge işlemede** `Apply to each` eşzamanlılığını 1 olarak ayarlayın — AI Builder dakika başına API limiti vardır / Set `Apply to each` concurrency to 1 for bulk document processing.
+- **`Detect language`** + **`Translate text`** + **`Run a prompt`** → tam çok dilli akıllı asistan / Combine for a fully multilingual intelligent assistant.
