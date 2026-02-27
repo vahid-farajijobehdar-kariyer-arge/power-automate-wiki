@@ -1,136 +1,115 @@
 /* ── Back-to-top button ───────────────────────────────────────── */
 (function () {
-  const btn = document.createElement('button');
+  var btn = document.createElement('button');
   btn.setAttribute('aria-label', 'Back to top');
   btn.innerHTML = '↑';
   Object.assign(btn.style, {
-    position: 'fixed',
-    bottom: '1.8rem',
-    right: '1.8rem',
-    width: '42px',
-    height: '42px',
-    borderRadius: '50%',
-    background: 'linear-gradient(135deg, #0078d4, #3b82f6)',
-    color: '#fff',
-    border: 'none',
-    fontSize: '1.1rem',
-    fontWeight: '700',
-    cursor: 'pointer',
-    opacity: '0',
-    pointerEvents: 'none',
-    transition: 'opacity .3s, transform .2s',
-    zIndex: '999',
-    boxShadow: '0 4px 14px rgba(0,120,212,.4)',
-    fontFamily: 'Inter, sans-serif',
+    position: 'fixed', bottom: '1.8rem', right: '1.8rem',
+    width: '42px', height: '42px', borderRadius: '50%',
+    background: 'linear-gradient(135deg,#0078d4,#3b82f6)',
+    color: '#fff', border: 'none', fontSize: '1.1rem', fontWeight: '700',
+    cursor: 'pointer', opacity: '0', pointerEvents: 'none',
+    transition: 'opacity .3s, transform .2s', zIndex: '999',
+    boxShadow: '0 4px 14px rgba(0,120,212,.4)', fontFamily: 'Inter,sans-serif',
   });
   document.body.appendChild(btn);
-
-  window.addEventListener('scroll', () => {
-    const show = window.scrollY > 300;
+  window.addEventListener('scroll', function () {
+    var show = window.scrollY > 300;
     btn.style.opacity = show ? '1' : '0';
     btn.style.pointerEvents = show ? 'auto' : 'none';
   });
-  btn.addEventListener('mouseenter', () => { btn.style.transform = 'scale(1.12) translateY(-2px)'; });
-  btn.addEventListener('mouseleave', () => { btn.style.transform = 'scale(1) translateY(0)'; });
-  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  btn.addEventListener('mouseenter', function () { btn.style.transform = 'scale(1.12) translateY(-2px)'; });
+  btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+  btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 })();
 
 /* ── Language switcher ────────────────────────────────────────── */
 (function () {
-  const STORE_KEY = 'pa-wiki-lang';
-  let lang = localStorage.getItem(STORE_KEY) || 'tr';
+  var STORE = 'pa-wiki-lang';
+  var lang  = localStorage.getItem(STORE) || 'tr';
 
-  /* Split "TR text / EN text" → [trPart, enPart] */
-  function splitBi(text) {
-    const idx = text.indexOf(' / ');
-    if (idx === -1) return null;
-    return [text.slice(0, idx).trim(), text.slice(idx + 3).trim()];
+  /* Split "TR text / EN text" on the first " / " */
+  function splitBi(str) {
+    var i = str.indexOf(' / ');
+    return i === -1 ? null : [str.slice(0, i).trim(), str.slice(i + 3).trim()];
   }
 
-  /* Walk a DOM subtree and translate every text node that has " / " */
-  function applyLang(root) {
+  /* Walk all text nodes inside root; transform any that contain " / " */
+  function applyLangToRoot(root) {
     if (!root) return;
-    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
-    const nodes = [];
-    let n;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    var nodes = [], n;
     while ((n = walker.nextNode())) nodes.push(n);
 
     nodes.forEach(function (node) {
-      /* Restore original from cache, or treat current text as original */
-      const original = node._biOriginal !== undefined
-        ? node._biOriginal
-        : node.textContent;
+      var el = node.parentElement;
+      if (!el) return;
 
-      const parts = splitBi(original);
+      /* On first encounter, cache the original bilingual string */
+      var original = el.getAttribute('data-bi');
+      if (!original) {
+        if (!node.textContent.includes(' / ')) return;
+        original = node.textContent;
+        el.setAttribute('data-bi', original);
+      }
+
+      var parts = splitBi(original);
       if (!parts) return;
-
-      /* Cache original on first encounter */
-      if (node._biOriginal === undefined) node._biOriginal = original;
-
       node.textContent = lang === 'tr' ? parts[0] : parts[1];
     });
   }
 
   function refreshAll() {
-    applyLang(document.querySelector('.sidebar-nav'));
-    applyLang(document.querySelector('.app-nav'));
+    applyLangToRoot(document.querySelector('.sidebar-nav'));
+    applyLangToRoot(document.querySelector('.app-nav'));
   }
 
   /* ── Language toggle button ── */
-  function createLangBtn() {
-    const btn = document.createElement('button');
-    btn.id = 'lang-toggle';
-    btn.setAttribute('aria-label', 'Switch language');
-    updateBtnLabel(btn);
+  function updateBtn() {
+    var btn = document.getElementById('pa-lang-btn');
+    if (!btn) return;
+    btn.textContent = lang === 'tr' ? '🇬🇧 English' : '🇹🇷 Türkçe';
+    btn.title       = lang === 'tr' ? 'Switch to English' : 'Türkçeye geç';
+  }
+
+  function createBtn() {
+    if (document.getElementById('pa-lang-btn')) return;
+    var btn = document.createElement('button');
+    btn.id = 'pa-lang-btn';
     Object.assign(btn.style, {
-      position:    'fixed',
-      bottom:      '5.2rem',      /* sits above the back-to-top button */
-      right:       '1.8rem',
-      padding:     '0 14px',
-      height:      '36px',
-      borderRadius: '18px',
-      background:  'linear-gradient(135deg, #0078d4, #3b82f6)',
-      color:       '#fff',
-      border:      'none',
-      fontSize:    '12px',
-      fontWeight:  '700',
-      letterSpacing: '0.04em',
-      cursor:      'pointer',
-      zIndex:      '999',
-      boxShadow:   '0 4px 14px rgba(0,120,212,.4)',
-      fontFamily:  'Inter, sans-serif',
-      transition:  'transform .2s, box-shadow .2s',
-      whiteSpace:  'nowrap',
+      position: 'fixed', bottom: '5.2rem', right: '1.8rem',
+      padding: '0 14px', height: '36px', borderRadius: '18px',
+      background: 'linear-gradient(135deg,#0078d4,#3b82f6)',
+      color: '#fff', border: 'none', fontSize: '12px',
+      fontWeight: '700', letterSpacing: '0.04em', cursor: 'pointer',
+      zIndex: '9999', boxShadow: '0 4px 14px rgba(0,120,212,.4)',
+      fontFamily: 'Inter,sans-serif', transition: 'transform .2s, box-shadow .2s',
+      whiteSpace: 'nowrap',
     });
-    btn.addEventListener('mouseenter', function () {
-      btn.style.transform  = 'scale(1.05) translateY(-1px)';
-      btn.style.boxShadow  = '0 6px 20px rgba(0,120,212,.5)';
-    });
-    btn.addEventListener('mouseleave', function () {
-      btn.style.transform = 'scale(1) translateY(0)';
+    btn.onmouseenter = function () {
+      btn.style.transform = 'scale(1.05) translateY(-1px)';
+      btn.style.boxShadow = '0 6px 20px rgba(0,120,212,.5)';
+    };
+    btn.onmouseleave = function () {
+      btn.style.transform = '';
       btn.style.boxShadow = '0 4px 14px rgba(0,120,212,.4)';
-    });
-    btn.addEventListener('click', function () {
+    };
+    btn.onclick = function () {
       lang = lang === 'tr' ? 'en' : 'tr';
-      localStorage.setItem(STORE_KEY, lang);
-      updateBtnLabel(btn);
+      localStorage.setItem(STORE, lang);
+      updateBtn();
+      refreshAll();
+    };
+    document.body.appendChild(btn);
+    updateBtn();
+  }
+
+  /* ── Register as a proper Docsify plugin (hook.doneEach is the correct API) ── */
+  window.$docsify = window.$docsify || {};
+  (window.$docsify.plugins = window.$docsify.plugins || []).push(function (hook) {
+    hook.doneEach(function () {
+      createBtn();
       refreshAll();
     });
-    document.body.appendChild(btn);
-  }
-
-  function updateBtnLabel(btn) {
-    btn.textContent = lang === 'tr' ? '🇬🇧 English' : '🇹🇷 Türkçe';
-    btn.title = lang === 'tr' ? 'Switch to English' : 'Türkçeye geç';
-  }
-
-  /* ── Hook into Docsify lifecycle ── */
-  window.$docsify = window.$docsify || {};
-  const _doneEach = window.$docsify.doneEach;
-  window.$docsify.doneEach = function () {
-    if (_doneEach) _doneEach.call(this);
-    /* Sidebar re-renders on every navigation — re-apply lang each time */
-    refreshAll();
-    if (!document.getElementById('lang-toggle')) createLangBtn();
-  };
+  });
 })();
