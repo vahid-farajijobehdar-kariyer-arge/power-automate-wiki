@@ -587,3 +587,22 @@ a, button { transition: color .15s, background .15s, border-color .15s, box-shad
 
 /* ─── Loading spinner override ───────────────────────────────── */
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Acknowledgement card ───────────────────────────────────── */
+.acknowledgement-card {
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(135deg, var(--pa-blue-light) 0%, #f0fdf4 100%);
+  border: 1.5px solid var(--pa-blue-mid);
+  border-left: 4px solid var(--pa-blue);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.95rem;
+}
+.acknowledgement-card p { margin: 0 0 .75rem; }
+.acknowledgement-card ul { margin: .25rem 0 .75rem 1.2rem; }
+.acknowledgement-card hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
+}

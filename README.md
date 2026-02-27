@@ -63,3 +63,31 @@ formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm')
 ```
 
 ✅ / ⚠️ / ❌ sütunlu tablolar destek durumunu gösterir / columns indicate support status or recommendation level.
+
+---
+
+## Teşekkür / Acknowledgements
+
+<div class="acknowledgement-card">
+
+**TR:** Bu wiki, [**kariyer.net**](https://www.kariyer.net) ekibinin desteği ve katkısıyla hazırlanmıştır.
+
+kariyer.net'e özellikle şunlar için teşekkür ederiz:
+
+- 🔑 **Lisanslar** — Power Automate Premium lisanslarının sağlanması
+- 💡 **Motivasyon** — Otomasyon kültürünün benimsenmesindeki liderlik
+- 📚 **Materyaller** — Gerçek dünya senaryoları ve veri setlerinin paylaşılması
+- 💬 **Geri Bildirim** — İçeriklerin şekillendirilmesine katkıda bulunan değerli yorumlar
+
+---
+
+**EN:** This wiki was prepared with the support and contributions of the [**kariyer.net**](https://www.kariyer.net) team.
+
+Special thanks to kariyer.net for:
+
+- 🔑 **Licenses** — Providing Power Automate Premium licenses
+- 💡 **Motivation** — Leading the adoption of an automation-first culture
+- 📚 **Materials** — Sharing real-world scenarios and datasets
+- 💬 **Feedback** — Valuable input that shaped the content of this wiki
+
+</div>
